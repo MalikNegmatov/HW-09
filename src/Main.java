@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         // Задачи блока Строки
         task1(false);
+        //task1(true);
 
     }
 
@@ -14,22 +15,29 @@ public class Main {
         System.out.println("\nЗадача № 1");
         String inputName, lastName, firstName, middleName;
 
-        if (flag) inputName = stringFromConsole();
-        else inputName = "Ivanov Ivan Ivanovich";
-
-        char[] arrayInputName = inputName.toCharArray();
-        int i = 0;
-        char blank = ' ';
-        while (arrayInputName[i] != blank) {
-            lastName = lastName.
+        if (flag) {
+            inputName = stringFromConsole();
+        }
+        else {
+            inputName = "Ivanov Ivan Ivanovich";
         }
 
+        String[] names = inputName.split(" ");
+        lastName = names[0];
+        firstName = names[1];
+        middleName = names[2];
+
+        StringBuilder fullName = new StringBuilder(lastName);
+        fullName.append(" " + firstName);
+        fullName.append(" " + middleName);
+
+        System.out.println(fullName);
     }
 
     public static String stringFromConsole() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите Ваше имя:");
-        return scanner.next();
+        return scanner.nextLine();
     }
 //    /**
 //     * Метод для генерации массива заданной длины и разряда значений
@@ -46,5 +54,5 @@ public class Main {
 //            arr[i] = random.nextInt(segmentLength)+segmentDisplace;
 //        }
 //        return arr;
-    }
+//    }
 }
