@@ -1,78 +1,113 @@
-//import java.util.Arrays;
-//import java.text.DecimalFormat;
-import java.util.Scanner;
+// import java.util.Scanner;
 
 public class Main {
 
+    public static String inputName = "Ivanov Ivan Ivanovich";
+    public static String blank = " ";
+
     public static void main(String[] args) {
         // Задачи блока Строки
-        String strOutput, name = "Ivanov Ivan Ivanovich";
+        String strOutput;
         System.out.println("\nЗадача № 1");
-        strOutput = task1(name);
+        strOutput = task1(inputName);
         System.out.println(strOutput);
 
-        task2(name);
-
-        name = "Иванов Семён Семёнович";
-        task3(name);
+        task2(inputName);
+        task3("Иванов Семён Семёнович");
 
         // Дополнительные Задачи блока Строки
-        task4(name);
+        task4(inputName);
+        task5("ivanov ivan ivanovich");
+        task6("135","246");
+        task6("ABC","abc");
     }
 
     public static String task1(String inputName) {
-        String lastName, firstName, middleName, blank = " ";
+        String lastName, firstName, middleName, fullName;
 
         String[] names = inputName.split(blank);
         lastName = names[0];
         firstName = names[1];
         middleName = names[2];
 
-        StringBuilder fullName = new StringBuilder(lastName);
-        fullName.append(blank + firstName);
-        fullName.append(blank + middleName);
+        fullName = lastName + blank + firstName +
+                blank + middleName;
 
-        return fullName.toString();
+        return fullName;
     }
+
     public static void task2(String fullName) {
         System.out.println("\nЗадача № 2");
 
-        fullName=fullName.toUpperCase();
+        fullName = fullName.toUpperCase();
         System.out.println("Данные ФИО сотрудника для заполнения отчета — " + fullName);
     }
+
     public static void task3(String fullName) {
         System.out.println("\nЗадача № 3");
-        fullName=fullName.replace('ё', 'е');
+        fullName = fullName.replace('ё', 'е');
         System.out.println("Данные ФИО сотрудника — " + fullName);
     }
 
     public static void task4(String fullName) {
         System.out.println("\nДоп. Задача № 4");
-        System.out.println(fullName);
-        int k = fullName.indexOf(" ");
-        System.out.println(k);
-        k = fullName.lastIndexOf(" ");
-        System.out.println(k);
+
+        String lastName = fullName.substring(0,fullName.indexOf(blank));
+        System.out.println(lastName);
+
+        String firstName = fullName.substring(fullName.indexOf(blank)+1,fullName.lastIndexOf(blank));
+        System.out.println(firstName);
+
+        String middleName = fullName.substring(fullName.lastIndexOf(blank)+1);
+        System.out.println(middleName);
     }
+    public static void task5(String fullName) {
+        System.out.println("\nДоп. Задача №5");
+
+        String[] names = fullName.split(blank);
+        String lastName = names[0];
+        String firstName = names[1];
+        String middleName = names[2];
+
+        lastName = lastName.substring(0,1).toUpperCase() +
+                lastName.substring(1).toLowerCase();
+        System.out.println(lastName);
+
+        firstName = firstName.substring(0,1).toUpperCase() +
+                firstName.substring(1).toLowerCase();
+        System.out.println(firstName);
+
+        middleName = middleName.substring(0,1).toUpperCase() +
+                middleName.substring(1).toLowerCase();
+        System.out.println(middleName);
+    }
+    public static void task6(String firstString, String secondString) {
+        System.out.println("\nДоп. Задача № 6");
+        String finalString="";
+
+    }
+}
+
+/*
     public static String stringFromConsole() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите Ваше имя:");
         return scanner.nextLine();
     }
-//    /**
-//     * Метод для генерации массива заданной длины и разряда значений
-//     *
-//     * @param arrayLength -- длина массива
-//     * @param segmentLength -- интервал генерируемых чисел
-//     * @param segmentDisplace -- смещение интервала на величину +rightBound
-//     * @return массив случайных чисел
-//     */
-//    public static int[] generateRandomArray(int arrayLength, int segmentLength, int segmentDisplace) {
-//        java.util.Random random = new java.util.Random();
-//        int[] arr   = new int[arrayLength];
-//        for (int i = 0; i < arr.length; i++) {
-//            arr[i] = random.nextInt(segmentLength)+segmentDisplace;
-//        }
-//        return arr;
-//    }
-}
+    /**
+     * Метод для генерации массива заданной длины и разряда значений
+     *
+     * @param arrayLength -- длина массива
+     * @param segmentLength -- интервал генерируемых чисел
+     * @param segmentDisplace -- смещение интервала на величину +rightBound
+     * @return массив случайных чисел
+     * /
+    public static int[] generateRandomArray(int arrayLength, int segmentLength, int segmentDisplace) {
+        java.util.Random random = new java.util.Random();
+        int[] arr   = new int[arrayLength];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(segmentLength)+segmentDisplace;
+        }
+        return arr;
+    }
+*/
