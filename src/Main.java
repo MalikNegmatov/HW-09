@@ -1,4 +1,4 @@
-// import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
 
@@ -18,8 +18,10 @@ public class Main {
         // Дополнительные Задачи блока Строки
         task4(inputName);
         task5("ivanov ivan ivanovich");
-        task6("135","246");
-        task6("ABC","abc");
+        task6("135", "246");
+        task6("ABC", "abc");
+        task7("aabccddefgghiijjkk");
+        task7("dkfglbsdlkjfghsdiufiffkjgnlsd");
     }
 
     public static String task1(String inputName) {
@@ -52,15 +54,16 @@ public class Main {
     public static void task4(String fullName) {
         System.out.println("\nДоп. Задача № 4");
 
-        String lastName = fullName.substring(0,fullName.indexOf(blank));
+        String lastName = fullName.substring(0, fullName.indexOf(blank));
         System.out.println(lastName);
 
-        String firstName = fullName.substring(fullName.indexOf(blank)+1,fullName.lastIndexOf(blank));
+        String firstName = fullName.substring(fullName.indexOf(blank) + 1, fullName.lastIndexOf(blank));
         System.out.println(firstName);
 
-        String middleName = fullName.substring(fullName.lastIndexOf(blank)+1);
+        String middleName = fullName.substring(fullName.lastIndexOf(blank) + 1);
         System.out.println(middleName);
     }
+
     public static void task5(String fullName) {
         System.out.println("\nДоп. Задача №5");
 
@@ -69,22 +72,50 @@ public class Main {
         String firstName = names[1];
         String middleName = names[2];
 
-        lastName = lastName.substring(0,1).toUpperCase() +
+        lastName = lastName.substring(0, 1).toUpperCase() +
                 lastName.substring(1).toLowerCase();
         System.out.println(lastName);
 
-        firstName = firstName.substring(0,1).toUpperCase() +
+        firstName = firstName.substring(0, 1).toUpperCase() +
                 firstName.substring(1).toLowerCase();
         System.out.println(firstName);
 
-        middleName = middleName.substring(0,1).toUpperCase() +
+        middleName = middleName.substring(0, 1).toUpperCase() +
                 middleName.substring(1).toLowerCase();
         System.out.println(middleName);
     }
+
     public static void task6(String firstString, String secondString) {
         System.out.println("\nДоп. Задача № 6");
-        String finalString="";
 
+        StringBuilder finalString = new StringBuilder();
+
+        for (int i = 0; i < firstString.length(); i++) {
+            finalString.append(firstString.charAt(i)).append(secondString.charAt(i));
+        }
+        System.out.println(finalString);
+    }
+
+    public static void task7(String inputString) {
+        System.out.println("\nДоп. Задача № 7");
+        String outputString="";
+        char[] charArray = inputString.toCharArray();
+        Arrays.sort(charArray);
+        inputString = new String(charArray);
+
+        int j, i = 0;
+
+        while (i < inputString.length()){
+            j = inputString.lastIndexOf(inputString.charAt(i));
+            if ( j - i > 0 ) {
+                outputString = String.format("%s%s", outputString, inputString.charAt(i));
+                i = j + 1;
+            }
+            else {
+                i++;
+            }
+        }
+        System.out.println(outputString);
     }
 }
 
