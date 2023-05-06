@@ -118,27 +118,3 @@ public class Main {
         System.out.println(outputString);
     }
 }
-
-/*
-    public static String stringFromConsole() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите Ваше имя:");
-        return scanner.nextLine();
-    }
-    /**
-     * Метод для генерации массива заданной длины и разряда значений
-     *
-     * @param arrayLength -- длина массива
-     * @param segmentLength -- интервал генерируемых чисел
-     * @param segmentDisplace -- смещение интервала на величину +rightBound
-     * @return массив случайных чисел
-     * /
-    public static int[] generateRandomArray(int arrayLength, int segmentLength, int segmentDisplace) {
-        java.util.Random random = new java.util.Random();
-        int[] arr   = new int[arrayLength];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(segmentLength)+segmentDisplace;
-        }
-        return arr;
-    }
-*/
